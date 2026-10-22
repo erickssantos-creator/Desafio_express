@@ -1,0 +1,15 @@
+=== LOG DE EXECUCAO DO TESTE CRUD ===
+
+1. Cadastrando primeiro veiculo...
+{"id":5,"placa":"AAA-1111","montadora":"Volvo","modelo":"VM","status":"DISPONIVEL"}
+
+2. Cadastrando segundo veiculo...
+{"id":6,"placa":"BBB-2222","montadora":"Scania","modelo":"R450","status":"DISPONIVEL"}
+
+3. Atualizando status do veiculo ID 3...
+{"mensagem":"Status atualizado com sucesso!","veiculo":{"id":3,"placa":"VWX-5555","montadora":"Volkswagen","modelo":"Delivery","status":"EM_ROTA"}}
+
+4. Removendo veiculo ID 4...
+{"mensagem":"Veiculo ID 4 removido com sucesso."}
+
+=== FIM DOS TESTES ===
