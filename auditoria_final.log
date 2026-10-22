@@ -1,0 +1,21 @@
+=== AUDITORIA FINAL | 22/10/2026 19:25:27 | API em http://localhost:4000 ===
+[OK   200] Health check (GET :4000/api/v1/health)
+{"status":"ok","uptime_segundos":1,"memoria_mb":{"rss":66.19,"heapTotal":16.48,"heapUsed":8.22},"timestamp":"2026-10-22T19:25:27.964Z"}
+[OK   201] Cadastrar veiculo A (POST :4000/api/v1/veiculos)
+{"id":3,"placa":"VWX-5555","montadora":"Volkswagen","modelo":"Delivery","status":"DISPONIVEL"}
+[OK   201] Cadastrar veiculo B (POST :4000/api/v1/veiculos)
+{"id":4,"placa":"KLL-9090","montadora":"Volvo","modelo":"FH 540","status":"DISPONIVEL"}
+>> IDs capturados via jq: A=3 | B=4
+[OK   400] POST invalido (sem placa) (POST :4000/api/v1/veiculos)
+{"erro":"Campos 'placa', 'montadora' e 'modelo' sao obrigatorios."}
+[OK   200] PATCH status do A (PATCH :4000/api/v1/veiculos/3/status)
+{"mensagem":"Status atualizado com sucesso!","veiculo":{"id":3,"placa":"VWX-5555","montadora":"Volkswagen","modelo":"Delivery","status":"MANUTENCAO"}}
+[OK   200] PUT substitui A por completo (PUT :4000/api/v1/veiculos/3)
+{"id":3,"placa":"NEW-0001","montadora":"Scania","modelo":"G410","status":"EM_ROTA"}
+[OK   200] DELETE do B (DELETE :4000/api/v1/veiculos/4)
+{"mensagem":"Veiculo ID 4 removido com sucesso."}
+[OK   404] GET do B deletado (tem que dar 404) (GET :4000/api/v1/veiculos/4)
+{"erro":"Veiculo nao encontrado na base de dados."}
+[OK   200] Listagem final (GET :4000/api/v1/veiculos)
+[{"id":1,"placa":"ABC-1234","montadora":"Scania","modelo":"R450","status":"DISPONIVEL"},{"id":2,"placa":"XYZ-9876","montadora":"Mercedes-Benz","modelo":"Actros","status":"EM_ROTA"},{"id":3,"placa":"NEW-0001","montadora":"Scania","modelo":"G410","status":"EM_ROTA"}]
+=== RESUMO: 9 ok | 0 falha(s) ===
